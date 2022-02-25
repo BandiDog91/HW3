@@ -1,4 +1,5 @@
 import fruits.Apple;
+import fruits.Banana;
 import fruits.Box;
 import fruits.Orange;
 
@@ -12,18 +13,17 @@ public class Main {
         changeArrayElements(arr, 0, 1, 2);
         System.out.println("Стало " + Arrays.toString(arr));
 
-        Box<Apple> appleBox = new Box<>(makeNewApples(5));
-        Box<Orange> orangeBox = new Box<>(makeNewOranges(10));
-        Box<Orange> secondOrangeBox = new Box<>(makeNewOranges(0));
-        //Box<Banana> bananaBox = new Box<>(makeNewBanana(15));
-        System.out.println(makeNewOranges(7));
-        System.out.println(appleBox.getWeight());
-        appleBox.compare(orangeBox);
-        appleBox.compare(secondOrangeBox);
+        Box<Apple> appleBox = new Box<>(makeNewApples(5), "Яблоки");
+        Box<Orange> orangeBox = new Box<>(makeNewOranges(10), "Апельсины");
+        Box<Orange> secondOrangeBox = new Box<>(makeNewOranges(0), "Апельсины");
+        Box<Banana> bananaBox = new Box<>(makeNewBanana(15), "Бананы");
+
+        appleBox.compare(orangeBox, "Апельсины");
+        appleBox.compare(secondOrangeBox, "Апельсины");
         orangeBox.transferTo(secondOrangeBox);
-        appleBox.compare(orangeBox);
-        appleBox.compare(secondOrangeBox);
-        //bananaBox.compare(appleBox);
+        appleBox.compare(orangeBox, "Апельсины");
+        appleBox.compare(secondOrangeBox, "Апельсины");
+        bananaBox.compare(appleBox, "Яблоки");
     }
 
     public static <T> void changeArrayElements(T[] array, int firstArr, int secondArr, int thirdArr) {
@@ -54,12 +54,12 @@ public class Main {
         return fruits;
     }
 
-//    public static ArrayList<Banana> makeNewBanana(int count) {
-//        ArrayList<Banana> fruits = new ArrayList<>();
-//        for (int i = 0; i < count; i++) {
-//            fruits.add(new Banana());
-//        }
-//        return fruits;
-//    }
+    public static ArrayList<Banana> makeNewBanana(int count) {
+        ArrayList<Banana> fruits = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            fruits.add(new Banana());
+        }
+        return fruits;
+    }
 }
 
