@@ -3,7 +3,7 @@ package fruits;
 public class Fruit {
     public float weight;
 
-    Fruit (float weigh){
+    Fruit (float weight){
         this.weight = weight;
 
     }
